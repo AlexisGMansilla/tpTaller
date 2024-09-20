@@ -13,38 +13,38 @@
 <body>
     <div class="container">
         <header class="header">
+            <a href="{% url 'index' %}">
             <img src="https://i.imgur.com/cn9LhHm.png" alt="Logo SySGames" class="img">
             <h1>Sistema de Gestión de Videojuegos</h1>
+            </a>
         </header>
         <div class="main">
             <aside class="sidebar">
-                <div class="sideItem">
+                <a class="sideItem" href="{% url 'registrar_videojuego' %}">
                     <i class="fi fi-br-gamepad"></i>    
                     <h3>Registrar Nuevo Videojuego</h3>
-                </div>
-                <div class="sideItem">
+                </a>
+                <a class="sideItem" href="{% url 'listar_videojuegos' %}">
                     <i class="fi fi-br-search"></i>
                     <h3>Consultar Videojuegos por Plataforma o Género</h3>
-                </div>
-                <div class="sideItem">
+                </a>
+                <a class="sideItem" href="#">
                     <i class="fi fi-br-add"></i>
                     <h3>Actualizar Stock</h3>
-                </div>
-                <div class="sideItem">
+                </a>
+                <a class="sideItem" href="{% url 'lista_alquileres' %}">
                     <i class="fi fi-br-edit"></i>
                     <h3>Registrar Alquiler</h3>
-                </div>
-                <div class="sideItem">
+                </a>
+                <a class="sideItem" href="{% url 'lista_alquileres' %}">
                     <i class="fi fi-br-checkbox"></i>
                     <h3>Finalizar Alquiler</h3>
-                </div>
+                </a>
             </aside>
 
             <main class="content">
-                <h2>Contenido Principal</h2>
-                <p>Este es el contenido principal de la página. Puedes añadir texto, imágenes, y otros elementos aquí.
-                </p>
-                <p>Este diseño se adapta a diferentes tamaños de pantalla y dispositivos gracias a Flexbox.</p>
+                <h2>{% block content_title %}Selecciona una opción del menú{% endblock %}</h2>
+                <p>{% block content %}{% endblock %}</p>
             </main>
         </div>
         <footer class="footer">

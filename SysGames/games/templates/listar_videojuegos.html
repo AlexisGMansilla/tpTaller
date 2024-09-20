@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block title %}Lista de Videojuegos{% endblock %}
+
+{% block content_title %}Lista de Videojuegos{% endblock %}
+
+{% block content %}
+<form method="GET" action="">
+    <label for="plataforma">Filtrar por Plataforma:</label>
+    <select name="plataforma" id="plataforma">
+        <!-- Opciones de plataforma -->
+    </select>
+
+    <label for="genero">Filtrar por Género:</label>
+    <select name="genero" id="genero">
+        <!-- Opciones de género -->
+    </select>
+
+    <button type="submit">Filtrar</button>
+</form>
+
+<ul>
+    {% for videojuego in videojuegos %}
+        <li>{{ videojuego.nombre }} - Stock: {{ videojuego.stock }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'registrar_videojuego' %}">Registrar un nuevo videojuego</a>
+{% endblock %}

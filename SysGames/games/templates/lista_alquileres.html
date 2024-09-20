@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block title %}Lista de Alquileres{% endblock %}
+
+{% block content_title %}Lista de Alquileres{% endblock %}
+
+{% block content %}
+<ul>
+    {% for alquiler in alquileres %}
+        <li>{{ alquiler.videojuego.nombre }} - Alquilado por {{ alquiler.usuario }} - Fecha de alquiler: {{ alquiler.fecha_alquiler }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

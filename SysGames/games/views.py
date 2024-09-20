@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import VideojuegoForm
-from .models import Videojuego
-from django.shortcuts import redirect, get_object_or_404
-from .models import Alquiler, Videojuego
+from .models import Videojuego, Alquiler
 from django.utils import timezone
+
+def index(request):
+    return render(request, 'index.html')
 
 def registrar_videojuego(request):
     if request.method == 'POST':
@@ -28,6 +29,11 @@ def listar_videojuegos(request):
         videojuegos = Videojuego.objects.all()
 
     return render(request, 'lista_videojuegos.html', {'videojuegos': videojuegos})
+
+def listar_alquileres(request):
+    alquileres = Alquiler.objects.all()
+    return render(request, 'lista_alquileres.html', {'alquileres': alquileres})
+
 
 def finalizar_alquiler(request, alquiler_id):
     alquiler = get_object_or_404(Alquiler, id=alquiler_id)
