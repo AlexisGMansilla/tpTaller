@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'SysGames.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sysgames',
+        'NAME': 'SysGames',
         'USER': 'root',
         'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '3306', 
     }
 }

@@ -8,22 +8,48 @@
 <form method="GET" action="">
     <label for="plataforma">Filtrar por Plataforma:</label>
     <select name="plataforma" id="plataforma" class="select">
-        <!-- Opciones de plataforma -->
+        <option value="">-- Todas las plataformas --</option>
+        {% for plataforma in plataformas %}
+            <option value="{{ plataforma.id }}" {% if plataforma.id == request.GET.plataforma %}selected{% endif %}>
+                {{ plataforma.nombre }}
+            </option>
+        {% endfor %}
     </select>
 
     <label for="genero">Filtrar por Género:</label>
     <select name="genero" id="genero" class="select">
-        <!-- Opciones de género -->
+        <option value="">-- Todos los géneros --</option>
+        {% for genero in generos %}
+            <option value="{{ genero.id }}" {% if genero.id == request.GET.genero %}selected{% endif %}>
+                {{ genero.nombre }}
+            </option>
+        {% endfor %}
     </select>
 
     <button type="submit" class="button">Filtrar</button>
 </form>
 
-<ul>
-    {% for videojuego in videojuegos %}
-        <li>{{ videojuego.nombre }} - Stock: {{ videojuego.stock }}</li>
-    {% endfor %}
-</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Plataforma</th>
+            <th>Género</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for videojuego in videojuegos %}
+        <tr>
+            <td>{{ videojuego.titulo }}</td>
+            <td>{{ videojuego.plataforma.nombre }}</td>
+            <td>{{ videojuego.genero.nombre }}</td>
+            <td>{{ videojuego.stock }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-<a href="{% url 'registrar_videojuego' %}" class="button"> Registrar un nuevo videojuego</a>
+
+<a href="{% url 'registrar_videojuego' %}" class="button">Registrar un nuevo videojuego</a>
 {% endblock %}
