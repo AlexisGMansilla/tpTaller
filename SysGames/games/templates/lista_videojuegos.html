@@ -8,12 +8,18 @@
 <form method="GET" action="">
     <label for="plataforma">Filtrar por Plataforma:</label>
     <select name="plataforma" id="plataforma" class="select">
-        <!-- Opciones de plataforma -->
+        <option value="">-- Todas las plataformas --</option>
+        {% for plataforma in plataformas %}
+            <option value="{{ plataforma.id }}">{{ plataforma.nombre }}</option>
+        {% endfor %}
     </select>
 
     <label for="genero">Filtrar por Género:</label>
     <select name="genero" id="genero" class="select">
-        <!-- Opciones de género -->
+        <option value="">-- Todos los géneros --</option>
+        {% for genero in generos %}
+            <option value="{{ genero.id }}">{{ genero.nombre }}</option>
+        {% endfor %}
     </select>
 
     <button type="submit" class="button">Filtrar</button>
@@ -21,9 +27,9 @@
 
 <ul>
     {% for videojuego in videojuegos %}
-        <li>{{ videojuego.nombre }} - Stock: {{ videojuego.stock }}</li>
+        <li>{{ videojuego.titulo }} - Stock: {{ videojuego.stock }}</li>
     {% endfor %}
 </ul>
 
-<a href="{% url 'registrar_videojuego' %}" class="button"> Registrar un nuevo videojuego</a>
+<a href="{% url 'registrar_videojuego' %}" class="button">Registrar un nuevo videojuego</a>
 {% endblock %}
