@@ -72,3 +72,41 @@ a{
     padding: 15px;
     text-align: center;
 }
+
+
+
+.button {
+    background-color: #004aad;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #003a8c;
+}
+
+.button:active {
+    background-color: #002f72;
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.5);
+}
+
+.select {
+    background-color: white;
+    color: #004aad;
+    padding: 10px;
+    border: 2px solid #004aad;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}

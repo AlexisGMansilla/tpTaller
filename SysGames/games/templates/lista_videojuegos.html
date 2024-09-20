@@ -7,16 +7,16 @@
 {% block content %}
 <form method="GET" action="">
     <label for="plataforma">Filtrar por Plataforma:</label>
-    <select name="plataforma" id="plataforma">
+    <select name="plataforma" id="plataforma" class="select">
         <!-- Opciones de plataforma -->
     </select>
 
     <label for="genero">Filtrar por Género:</label>
-    <select name="genero" id="genero">
+    <select name="genero" id="genero" class="select">
         <!-- Opciones de género -->
     </select>
 
-    <button type="submit">Filtrar</button>
+    <button type="submit" class="button">Filtrar</button>
 </form>
 
 <ul>
@@ -25,5 +25,5 @@
     {% endfor %}
 </ul>
 
-<a href="{% url 'registrar_videojuego' %}">Registrar un nuevo videojuego</a>
+<a href="{% url 'registrar_videojuego' %}" class="button"> Registrar un nuevo videojuego</a>
 {% endblock %}
