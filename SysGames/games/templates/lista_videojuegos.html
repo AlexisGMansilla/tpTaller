@@ -29,11 +29,27 @@
     <button type="submit" class="button">Filtrar</button>
 </form>
 
-<ul>
-    {% for videojuego in videojuegos %}
-        <li>{{ videojuego.titulo }} - Stock: {{ videojuego.stock }}</li>
-    {% endfor %}
-</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Plataforma</th>
+            <th>Género</th>
+            <th>Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for videojuego in videojuegos %}
+        <tr>
+            <td>{{ videojuego.titulo }}</td>
+            <td>{{ videojuego.plataforma.nombre }}</td>
+            <td>{{ videojuego.genero.nombre }}</td>
+            <td>{{ videojuego.stock }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 
 <a href="{% url 'registrar_videojuego' %}" class="button">Registrar un nuevo videojuego</a>
 {% endblock %}
