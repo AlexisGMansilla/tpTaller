@@ -10,7 +10,9 @@
     <select name="plataforma" id="plataforma" class="select">
         <option value="">-- Todas las plataformas --</option>
         {% for plataforma in plataformas %}
-            <option value="{{ plataforma.id }}">{{ plataforma.nombre }}</option>
+            <option value="{{ plataforma.id }}" {% if plataforma.id == request.GET.plataforma %}selected{% endif %}>
+                {{ plataforma.nombre }}
+            </option>
         {% endfor %}
     </select>
 
@@ -18,7 +20,9 @@
     <select name="genero" id="genero" class="select">
         <option value="">-- Todos los géneros --</option>
         {% for genero in generos %}
-            <option value="{{ genero.id }}">{{ genero.nombre }}</option>
+            <option value="{{ genero.id }}" {% if genero.id == request.GET.genero %}selected{% endif %}>
+                {{ genero.nombre }}
+            </option>
         {% endfor %}
     </select>
 
