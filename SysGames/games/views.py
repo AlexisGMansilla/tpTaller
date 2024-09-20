@@ -17,8 +17,6 @@ def registrar_videojuego(request):
     
     return render(request, 'registrar_videojuego.html', {'form': form})
 
-
-
 def listar_videojuegos(request):
     plataforma_id = request.GET.get('plataforma', None) 
     genero_id = request.GET.get('genero', None) 
@@ -43,18 +41,6 @@ def listar_videojuegos(request):
 def listar_alquileres(request):
     alquileres = Alquiler.objects.all()
     return render(request, 'lista_alquileres.html', {'alquileres': alquileres})
-
-def finalizar_alquiler(request, alquiler_id):
-    alquiler = get_object_or_404(Alquiler, id=alquiler_id)
-    if alquiler.fecha_devolucion is None:  # Solo si no se ha devuelto aún
-        alquiler.fecha_devolucion = timezone.now()
-        alquiler.save()
-
-        # Actualizar el stock del videojuego
-        alquiler.videojuego.stock += 1
-        alquiler.videojuego.save()
-
-    return redirect('lista_alquileres')
 
 def registrar_alquiler(request):
     if request.method == 'POST':
@@ -100,3 +86,23 @@ def finalizar_alquiler(request, alquiler_id):
             return redirect('lista_alquileres')  # Redirigir a la lista de alquileres
 
     return render(request, 'finalizar_alquiler.html', {'alquiler': alquiler})
+
+def actualizar_stock(request, videojuego_id):
+    videojuego = get_object_or_404(Videojuego, id=videojuego_id)
+    
+    if request.method == 'POST':
+        nuevo_stock = request.POST.get('nuevo_stock')  # Obtiene el valor del formulario
+        try:
+            nuevo_stock = int(nuevo_stock)  # Convierte el valor a un entero
+            if nuevo_stock >= 0:  # Verifica que el stock no sea negativo
+                videojuego.stock = nuevo_stock
+                videojuego.save()
+                return redirect('listar_videojuegos')  # Redirige a la lista de videojuegos
+            else:
+                # Maneja el error si el stock es negativo
+                return render(request, 'actualizar_stock.html', {'videojuego': videojuego, 'error': 'El stock no puede ser negativo.'})
+        except ValueError:
+            # Maneja el error si el valor no es un número válido
+            return render(request, 'actualizar_stock.html', {'videojuego': videojuego, 'error': 'Ingrese un número válido para el stock.'})
+    
+    return render(request, 'actualizar_stock.html', {'videojuego': videojuego})

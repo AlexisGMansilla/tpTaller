@@ -9,4 +9,6 @@ urlpatterns = [
     path('finalizar_alquiler/<int:alquiler_id>/', views.finalizar_alquiler, name='finalizar_alquiler'),
     path('registrar_alquiler/', views.registrar_alquiler, name='registrar_alquiler'),
     path('finalizar_alquiler/<int:alquiler_id>/', views.finalizar_alquiler, name='finalizar_alquiler'),
+    path('finalizar_alquiler/<int:alquiler_id>/', views.finalizar_alquiler, name='finalizar_alquiler'),
+    path('actualizar_stock/<int:videojuego_id>/', views.actualizar_stock, name='actualizar_stock'),
 ]

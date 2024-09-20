@@ -11,4 +11,7 @@
     {% csrf_token %}
     <button type="submit" class="button">Finalizar Alquiler</button>
 </form>
+
+<a href="{% url 'lista_alquileres' %}" class="button">Cancelar</a>
+
 {% endblock %}

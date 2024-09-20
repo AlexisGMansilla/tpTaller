@@ -20,9 +20,14 @@
             <td>{{ alquiler.videojuego.titulo }}</td>
             <td>{{ alquiler.cliente }}</td>
             <td>{{ alquiler.fecha_alquiler|date:"d/m/Y H:i" }}</td>
-            <td>{% if alquiler.fecha_devolucion %}{{ alquiler.fecha_devolucion|date:"d/m/Y H:i" }}{% else %}Pendiente{% endif %}</td>
+            <td>
+                {% if not alquiler.fecha_devolucion %}
+                <a href="{% url 'finalizar_alquiler' alquiler.id %}" class="button">Finalizar Alquiler</a>
+                {% endif %}
+            </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+<a href="{% url 'registrar_alquiler' %}" class="button">Registrar un nuevo alquiler</a>
 {% endblock %}

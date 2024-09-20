@@ -1,4 +1,4 @@
-/* colors:
+/* paleta de colores:
 ##004aad azul
 #6c48c5 morado
 #c68fe6 moradito
@@ -28,7 +28,7 @@ body{
     align-items: center;
 }
 .img{
-    max-width: 100px;
+    max-width: 80px;
 }
 .main{
     display: flex;
@@ -70,15 +70,19 @@ a{
     background-color: #01306d;
     color: #fff;
     padding: 15px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
 }
-
+span{
+    font-weight: bold;
+}
 
 
 .button {
     background-color: #004aad;
     color: white;
     padding: 10px 20px;
+    margin-bottom: 16px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -111,7 +115,10 @@ a{
     cursor: pointer;
 }
 
+
+
 /* tabla  */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -128,7 +135,6 @@ thead {
 }
 
 thead th {
-    padding: 15px;
     text-align: left;
 }
 
@@ -142,11 +148,9 @@ tbody tr:nth-child(even) {
 
 tbody tr:nth-child(odd) {
     background-color: #6c48c5;
-    color: white;
 }
 
 tbody td {
-    padding: 12px;
     color: #fff7f7;
     font-size: 16px;
 }
@@ -163,10 +167,13 @@ tbody td {
 }
 
 table th, table td {
-    padding: 12px 15px;
+    padding: 14px 15px;
 }
 
-/* Bordes y sombreado */
+
+/* bordes y sombreado */
+
+
 table, th, td {
     border: none;
 }
@@ -181,7 +188,10 @@ tfoot {
     font-weight: bold;
 }
 
-/* Ajustes adicionales */
+
+/* select de la tabla */
+
+
 table select {
     width: 100%;
     padding: 12px;
@@ -189,16 +199,14 @@ table select {
     background-color: #fff;
     color: #004aad;
     border: 2px solid #004aad;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
-    font-weight: bold;
     cursor: pointer;
 }
 
 table select:focus {
     border-color: #6c48c5;
     outline: none;
-    box-shadow: 0 0 5px rgba(108, 72, 197, 0.5);
 }
 
 .table {

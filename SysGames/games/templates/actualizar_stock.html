@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block title %}Actualizar Stock{% endblock %}
+
+{% block content_title %}Actualizar Stock del Videojuego{% endblock %}
+
+{% block content %}
+    <h2>{{ videojuego.titulo }}</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <label for="nuevo_stock">Nuevo Stock:</label>
+        <input type="number" id="nuevo_stock" name="nuevo_stock" value="{{ videojuego.stock }}" min="0" required>
+        <button type="submit" class="button">Actualizar Stock</button>
+    </form>
+    <a href="{% url 'listar_videojuegos' %}" class="button">Cancelar</a>
+{% endblock %}

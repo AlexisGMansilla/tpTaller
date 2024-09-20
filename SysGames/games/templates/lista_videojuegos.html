@@ -36,6 +36,7 @@
             <th>Plataforma</th>
             <th>Género</th>
             <th>Stock</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +46,9 @@
             <td>{{ videojuego.plataforma.nombre }}</td>
             <td>{{ videojuego.genero.nombre }}</td>
             <td>{{ videojuego.stock }}</td>
+            <td>
+                <a href="{% url 'actualizar_stock' videojuego.id %}" class="button">Actualizar Stock</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
