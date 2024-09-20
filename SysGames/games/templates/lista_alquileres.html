@@ -5,9 +5,24 @@
 {% block content_title %}Lista de Alquileres{% endblock %}
 
 {% block content %}
-<ul>
-    {% for alquiler in alquileres %}
-        <li>{{ alquiler.videojuego.nombre }} - Alquilado por {{ alquiler.usuario }} - Fecha de alquiler: {{ alquiler.fecha_alquiler }}</li>
-    {% endfor %}
-</ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Videojuego</th>
+            <th>Cliente</th>
+            <th>Fecha de Alquiler</th>
+            <th>Fecha de Devolución</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for alquiler in alquileres %}
+        <tr>
+            <td>{{ alquiler.videojuego.titulo }}</td>
+            <td>{{ alquiler.cliente }}</td>
+            <td>{{ alquiler.fecha_alquiler|date:"d/m/Y H:i" }}</td>
+            <td>{% if alquiler.fecha_devolucion %}{{ alquiler.fecha_devolucion|date:"d/m/Y H:i" }}{% else %}Pendiente{% endif %}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
