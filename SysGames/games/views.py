@@ -15,7 +15,11 @@ def registrar_videojuego(request):
     else:
         form = VideojuegoForm() 
     
+    print(form.fields['plataforma'].queryset)  # Verifica si las plataformas están cargando
+    print(form.fields['genero'].queryset)      # Verifica si los géneros están cargando
+    
     return render(request, 'registrar_videojuego.html', {'form': form})
+
 
 def listar_videojuegos(request):
     plataforma_id = request.GET.get('plataforma', None)
