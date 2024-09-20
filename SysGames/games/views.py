@@ -20,25 +20,24 @@ def registrar_videojuego(request):
 
 
 def listar_videojuegos(request):
-    plataforma_id = request.GET.get('plataforma', None)  # Obtener el valor de la plataforma seleccionada
-    genero_id = request.GET.get('genero', None)  # Obtener el valor del género seleccionado
+    plataforma_id = request.GET.get('plataforma', None) 
+    genero_id = request.GET.get('genero', None) 
 
-    plataformas = Plataforma.objects.all()  # Obtener todas las plataformas para mostrar en el formulario
-    generos = Genero.objects.all()  # Obtener todos los géneros para mostrar en el formulario
+    plataformas = Plataforma.objects.all() 
+    generos = Genero.objects.all() 
 
-    # Aplicar los filtros de plataforma y género
-    videojuegos = Videojuego.objects.all()  # Comenzar con todos los videojuegos
+    videojuegos = Videojuego.objects.all()  # muestra todos los juegos
 
-    if plataforma_id:  # Si se ha seleccionado una plataforma
+    if plataforma_id:  # SI -> se seleccion una plataforma
         videojuegos = videojuegos.filter(plataforma_id=plataforma_id)
 
-    if genero_id:  # Si se ha seleccionado un género
+    if genero_id:   # SI -> se seleccion un genero
         videojuegos = videojuegos.filter(genero_id=genero_id)
 
     return render(request, 'lista_videojuegos.html', {
         'videojuegos': videojuegos,
-        'plataformas': plataformas,  # Pasar plataformas a la plantilla
-        'generos': generos,  # Pasar géneros a la plantilla
+        'plataformas': plataformas,
+        'generos': generos,
     })
 
 def listar_alquileres(request):
