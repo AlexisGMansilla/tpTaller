@@ -7,6 +7,7 @@
     <title>{% block title %} {% endblock %} SysGames</title>
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="shortcut icon" href="https://i.imgur.com/cn9LhHm.png" type="image/x-icon">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
 </head>
 
 <body>
@@ -17,8 +18,26 @@
         </header>
         <div class="main">
             <aside class="sidebar">
-                <h2>Barra Lateral</h2>
-                <p>Contenido de la barra lateral. Aquí puedes colocar enlaces, información adicional, etc.</p>
+                <div class="sideItem">
+                    <i class="fi fi-br-gamepad"></i>    
+                    <h3>Registrar Nuevo Videojuego</h3>
+                </div>
+                <div class="sideItem">
+                    <i class="fi fi-br-search"></i>
+                    <h3>Consultar Videojuegos por Plataforma o Género</h3>
+                </div>
+                <div class="sideItem">
+                    <i class="fi fi-br-add"></i>
+                    <h3>Actualizar Stock</h3>
+                </div>
+                <div class="sideItem">
+                    <i class="fi fi-br-edit"></i>
+                    <h3>Registrar Alquiler</h3>
+                </div>
+                <div class="sideItem">
+                    <i class="fi fi-br-checkbox"></i>
+                    <h3>Finalizar Alquiler</h3>
+                </div>
             </aside>
 
             <main class="content">
