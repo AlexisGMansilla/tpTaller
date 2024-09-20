@@ -11,12 +11,9 @@ def registrar_videojuego(request):
         form = VideojuegoForm(request.POST) 
         if form.is_valid():
             form.save()  
-            return redirect('lista_videojuegos')  
+            return redirect('listar_videojuegos')  
     else:
         form = VideojuegoForm() 
-    
-    print(form.fields['plataforma'].queryset)  # Verifica si las plataformas están cargando
-    print(form.fields['genero'].queryset)      # Verifica si los géneros están cargando
     
     return render(request, 'registrar_videojuego.html', {'form': form})
 
