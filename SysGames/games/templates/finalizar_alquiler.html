@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block title %}Lista de Alquileres{% endblock %}
+
+{% block content_title %}Lista de Alquileres{% endblock %}
+
+{% block content %}
+
+<h2>Finalizar Alquiler</h2>
+<p>¿Deseas finalizar el alquiler del videojuego "{{ alquiler.videojuego.titulo }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Finalizar Alquiler</button>
+</form>
+<a href="{% url 'lista_alquileres' %}">Volver a la lista de alquileres</a>
+
+{% endblock %}

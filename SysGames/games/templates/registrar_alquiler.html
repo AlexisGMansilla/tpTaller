@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block title %}Lista de Alquileres{% endblock %}
+
+{% block content_title %}Lista de Alquileres{% endblock %}
+
+{% block content %}
+
+<h2>Registrar Alquiler</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Registrar Alquiler</button>
+</form>
+<a href="{% url 'lista_videojuegos' %}">Volver a la lista de videojuegos</a>
+
+{% endblock %}
