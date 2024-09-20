@@ -49,19 +49,19 @@ def registrar_alquiler(request):
             alquiler = form.save(commit=False)
             videojuego = alquiler.videojuego
 
-            # Verificar si hay stock disponible
+            # verifica si hay stock disponible
             if videojuego.stock > 0:
                 # Reducir el stock en 1
                 videojuego.stock -= 1
                 videojuego.save()
 
-                # Registrar la fecha de alquiler
+                # registrar la fecha de alquiler
                 alquiler.fecha_alquiler = timezone.now()
                 alquiler.save()
 
-                return redirect('lista_alquileres')  # Redirigir a la lista de alquileres
+                return redirect('lista_alquileres') 
             else:
-                # Manejo de error: No hay stock disponible
+                # Sino... no hay stock disponible
                 form.add_error('videojuego', 'No hay stock disponible para este videojuego.')
 
     else:
@@ -74,16 +74,16 @@ def finalizar_alquiler(request, alquiler_id):
     alquiler = get_object_or_404(Alquiler, id=alquiler_id)
     
     if request.method == 'POST':
-        if alquiler.fecha_devolucion is None:  # Solo si no ha sido devuelto aún
-            # Registrar la fecha de devolución
+        if alquiler.fecha_devolucion is None:  # si no ha sido devuelto aún
+            # registrar la fecha de devolución
             alquiler.fecha_devolucion = timezone.now()
             alquiler.save()
 
-            # Aumentar el stock del videojuego
+            # aumentar el stock del videojuego
             alquiler.videojuego.stock += 1
             alquiler.videojuego.save()
 
-            return redirect('lista_alquileres')  # Redirigir a la lista de alquileres
+            return redirect('lista_alquileres') 
 
     return render(request, 'finalizar_alquiler.html', {'alquiler': alquiler})
 
@@ -91,18 +91,18 @@ def actualizar_stock(request, videojuego_id):
     videojuego = get_object_or_404(Videojuego, id=videojuego_id)
     
     if request.method == 'POST':
-        nuevo_stock = request.POST.get('nuevo_stock')  # Obtiene el valor del formulario
+        nuevo_stock = request.POST.get('nuevo_stock') 
         try:
-            nuevo_stock = int(nuevo_stock)  # Convierte el valor a un entero
-            if nuevo_stock >= 0:  # Verifica que el stock no sea negativo
+            nuevo_stock = int(nuevo_stock)  
+            if nuevo_stock >= 0:  # verifica que el stock no sea negativo
                 videojuego.stock = nuevo_stock
                 videojuego.save()
-                return redirect('listar_videojuegos')  # Redirige a la lista de videojuegos
+                return redirect('listar_videojuegos') 
             else:
-                # Maneja el error si el stock es negativo
+                # si el stock es negativo
                 return render(request, 'actualizar_stock.html', {'videojuego': videojuego, 'error': 'El stock no puede ser negativo.'})
         except ValueError:
-            # Maneja el error si el valor no es un número válido
+            # si el valor no es un número válido
             return render(request, 'actualizar_stock.html', {'videojuego': videojuego, 'error': 'Ingrese un número válido para el stock.'})
     
     return render(request, 'actualizar_stock.html', {'videojuego': videojuego})
